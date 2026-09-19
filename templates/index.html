@@ -14,10 +14,17 @@
     </p>
 
     <div class="accuracy-note">
-      ความแม่นยำของโมเดลบนชุดทดสอบ: <strong>{{ test_accuracy }}%</strong>
-      (เทียบกับการเดา "เมนูฮิตสุด" ตลอดเวลา ซึ่งจะได้ <strong>{{ baseline_accuracy }}%</strong>)
-      &mdash; สัญญาณจากเวลาเพียงอย่างเดียวค่อนข้างอ่อน จึงควรดูผลเป็น
-      "แนวโน้มความน่าจะเป็น" มากกว่าคำตอบที่แน่นอน
+      <div>
+        ทายเมนูเดียวถูกต้อง (Top-1 Accuracy): <strong>{{ test_accuracy }}%</strong>
+        (เทียบกับการเดา "เมนูฮิตสุด" ตลอดเวลา ซึ่งจะได้ <strong>{{ baseline_accuracy }}%</strong>)
+      </div>
+      <div class="top-k-line">
+        คำตอบจริงอยู่ใน <strong>{{ top_k }} เมนูแนะนำอันดับแรก</strong> (Top-{{ top_k }} Accuracy):
+        <strong>{{ top_k_accuracy }}%</strong>
+      </div>
+      &mdash; สัญญาณจากเวลาเพียงอย่างเดียวค่อนข้างอ่อน การทายเมนูเดียวจึงไม่แม่นนัก แต่ถ้าดูเป็น
+      "รายการเมนูแนะนำ {{ top_k }} อันดับแรก" (แถบที่ไฮไลต์ด้านล่าง) จะครอบคลุมคำตอบจริงได้สูงกว่ามาก
+      จึงควรใช้ผลนี้เป็น "แนวโน้มความน่าจะเป็น" มากกว่าคำตอบที่แน่นอนเพียงคำตอบเดียว
     </div>
 
     <form id="predict-form">
@@ -55,6 +62,10 @@
       <h2>ผลการทำนาย</h2>
       <p class="top-prediction">
         เมนูที่น่าจะถูกสั่งมากที่สุด: <span id="top-coffee">-</span>
+      </p>
+      <p class="top-k-caption">
+        แถบสีเข้ม <span id="top-k-caption-num">{{ top_k }}</span> อันดับแรก
+        คือ "เมนูแนะนำ" ที่ครอบคลุมคำตอบจริงได้ {{ top_k_accuracy }}% ของเวลา
       </p>
       <div id="bars" class="bars"></div>
     </section>

@@ -49,6 +49,14 @@ h1 {
   margin-bottom: 24px;
 }
 
+.accuracy-note > div {
+  margin-bottom: 6px;
+}
+
+.top-k-line strong {
+  color: var(--accent);
+}
+
 .field {
   margin-bottom: 16px;
   display: flex;
@@ -90,6 +98,12 @@ button:hover { background: #5a3d2b; }
   font-size: 1.1rem;
 }
 
+.top-k-caption {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: -6px;
+}
+
 #top-coffee {
   color: var(--accent);
   font-weight: 700;
@@ -103,6 +117,13 @@ button:hover { background: #5a3d2b; }
   align-items: center;
   gap: 10px;
   font-size: 0.9rem;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.bar-row-top-k {
+  background: #f6ead6;
+  font-weight: 600;
 }
 
 .bar-track {

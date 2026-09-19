@@ -29,12 +29,12 @@ form.addEventListener("submit", async (e) => {
     topCoffeeEl.textContent = data.prediction;
     barsEl.innerHTML = "";
 
-    data.probabilities.forEach(({ coffee_name, probability }) => {
+    data.probabilities.forEach(({ coffee_name, probability, in_top_k }) => {
       const pct = (probability * 100).toFixed(1);
       const row = document.createElement("div");
-      row.className = "bar-row";
+      row.className = "bar-row" + (in_top_k ? " bar-row-top-k" : "");
       row.innerHTML = `
-        <span>${coffee_name}</span>
+        <span>${in_top_k ? "⭐ " : ""}${coffee_name}</span>
         <span class="bar-track"><span class="bar-fill" style="width: ${pct}%"></span></span>
         <span class="bar-pct">${pct}%</span>
       `;

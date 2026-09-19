@@ -18,10 +18,17 @@ import joblib
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+    top_k_accuracy_score,
+)
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
+
+TOP_K = 4
 
 FEATURES = ["Weekday", "Month_name", "Time_of_Day"]
 TARGET = "coffee_name"
@@ -57,10 +64,15 @@ def main():
     pipeline.fit(X_train, y_train)
 
     y_pred = pipeline.predict(X_test)
+    y_proba = pipeline.predict_proba(X_test)
     acc = accuracy_score(y_test, y_pred)
     baseline_acc = y.value_counts(normalize=True).max()
+    top_k_acc = top_k_accuracy_score(
+        y_test, y_proba, k=TOP_K, labels=pipeline.named_steps["model"].classes_
+    )
     print(f"Majority-class baseline accuracy: {baseline_acc:.3f}")
-    print(f"Model test accuracy:              {acc:.3f}\n")
+    print(f"Model test accuracy (Top-1):       {acc:.3f}")
+    print(f"Model test accuracy (Top-{TOP_K}):       {top_k_acc:.3f}\n")
     print("Classification report:")
     print(classification_report(y_test, y_pred))
     labels = sorted(y.unique())
@@ -77,6 +89,8 @@ def main():
             "time_of_day_order": TIME_OF_DAY_ORDER,
             "test_accuracy": acc,
             "baseline_accuracy": baseline_acc,
+            "top_k": TOP_K,
+            "top_k_accuracy": top_k_acc,
         },
         "model/coffee_model.joblib",
     )

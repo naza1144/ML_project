@@ -13,6 +13,8 @@ month_order = bundle["month_order"]
 time_of_day_order = bundle["time_of_day_order"]
 test_accuracy = bundle["test_accuracy"]
 baseline_accuracy = bundle["baseline_accuracy"]
+top_k = bundle["top_k"]
+top_k_accuracy = bundle["top_k_accuracy"]
 
 
 @app.route("/")
@@ -24,6 +26,8 @@ def index():
         times_of_day=time_of_day_order,
         test_accuracy=round(test_accuracy * 100, 1),
         baseline_accuracy=round(baseline_accuracy * 100, 1),
+        top_k=top_k,
+        top_k_accuracy=round(top_k_accuracy * 100, 1),
     )
 
 
@@ -51,9 +55,14 @@ def predict():
     return jsonify(
         {
             "prediction": ranked[0][0],
+            "top_k": top_k,
             "probabilities": [
-                {"coffee_name": name, "probability": round(float(p), 4)}
-                for name, p in ranked
+                {
+                    "coffee_name": name,
+                    "probability": round(float(p), 4),
+                    "in_top_k": rank < top_k,
+                }
+                for rank, (name, p) in enumerate(ranked)
             ],
         }
     )
