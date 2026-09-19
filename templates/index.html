@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ทำนายเมนูกาแฟ</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="card">
+    <h1>☕ ทำนายเมนูกาแฟที่จะถูกสั่ง</h1>
+    <p class="subtitle">
+      เลือกวัน / เดือน / ช่วงเวลา แล้วโมเดลจะทำนายว่าลูกค้าน่าจะสั่งเมนูอะไร
+    </p>
+
+    <div class="accuracy-note">
+      ความแม่นยำของโมเดลบนชุดทดสอบ: <strong>{{ test_accuracy }}%</strong>
+      (เทียบกับการเดา "เมนูฮิตสุด" ตลอดเวลา ซึ่งจะได้ <strong>{{ baseline_accuracy }}%</strong>)
+      &mdash; สัญญาณจากเวลาเพียงอย่างเดียวค่อนข้างอ่อน จึงควรดูผลเป็น
+      "แนวโน้มความน่าจะเป็น" มากกว่าคำตอบที่แน่นอน
+    </div>
+
+    <form id="predict-form">
+      <div class="field">
+        <label for="weekday">วัน</label>
+        <select id="weekday" name="weekday">
+          {% for w in weekdays %}
+          <option value="{{ w }}">{{ w }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="month">เดือน</label>
+        <select id="month" name="month">
+          {% for m in months %}
+          <option value="{{ m }}">{{ m }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="time_of_day">ช่วงเวลา</label>
+        <select id="time_of_day" name="time_of_day">
+          {% for t in times_of_day %}
+          <option value="{{ t }}">{{ t }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit">ทำนายเมนู</button>
+    </form>
+
+    <section id="result" class="result hidden">
+      <h2>ผลการทำนาย</h2>
+      <p class="top-prediction">
+        เมนูที่น่าจะถูกสั่งมากที่สุด: <span id="top-coffee">-</span>
+      </p>
+      <div id="bars" class="bars"></div>
+    </section>
+
+    <p id="error" class="error hidden"></p>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
