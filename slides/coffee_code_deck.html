@@ -1,0 +1,599 @@
+<title>หลังบ้านทำนายกาแฟ</title>
+<meta name="description" content="ทัวร์โค้ดทั้งหมดของระบบทำนายเมนูกาแฟ ตั้งแต่เทรนโมเดลจนถึงหน้าเว็บ">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Taviraj:wght@400;600;700;900&family=Sarabun:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/*!
+* reveal.js 4.5.0
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2011-2023 Hakim El Hattab, https://hakim.se
+*/.reveal .r-stretch,.reveal .stretch{max-width:none;max-height:none}.reveal pre.r-stretch code,.reveal pre.stretch code{height:100%;max-height:100%;box-sizing:border-box}.reveal .r-fit-text{display:inline-block;white-space:nowrap}.reveal .r-stack{display:grid}.reveal .r-stack>*{grid-area:1/1;margin:auto}.reveal .r-hstack,.reveal .r-vstack{display:flex}.reveal .r-hstack img,.reveal .r-hstack video,.reveal .r-vstack img,.reveal .r-vstack video{min-width:0;min-height:0;object-fit:contain}.reveal .r-vstack{flex-direction:column;align-items:center;justify-content:center}.reveal .r-hstack{flex-direction:row;align-items:center;justify-content:center}.reveal .items-stretch{align-items:stretch}.reveal .items-start{align-items:flex-start}.reveal .items-center{align-items:center}.reveal .items-end{align-items:flex-end}.reveal .justify-between{justify-content:space-between}.reveal .justify-around{justify-content:space-around}.reveal .justify-start{justify-content:flex-start}.reveal .justify-center{justify-content:center}.reveal .justify-end{justify-content:flex-end}html.reveal-full-page{width:100%;height:100%;height:100vh;height:calc(var(--vh,1vh) * 100);overflow:hidden}.reveal-viewport{height:100%;overflow:hidden;position:relative;line-height:1;margin:0;background-color:#fff;color:#000}.reveal-viewport:fullscreen{top:0!important;left:0!important;width:100%!important;height:100%!important;transform:none!important}.reveal .fragment{transition:all .2s ease}.reveal .fragment:not(.custom){opacity:0;visibility:hidden;will-change:opacity}.reveal .fragment.visible{opacity:1;visibility:inherit}.reveal .fragment.disabled{transition:none}.reveal .fragment.grow{opacity:1;visibility:inherit}.reveal .fragment.grow.visible{transform:scale(1.3)}.reveal .fragment.shrink{opacity:1;visibility:inherit}.reveal .fragment.shrink.visible{transform:scale(.7)}.reveal .fragment.zoom-in{transform:scale(.1)}.reveal .fragment.zoom-in.visible{transform:none}.reveal .fragment.fade-out{opacity:1;visibility:inherit}.reveal .fragment.fade-out.visible{opacity:0;visibility:hidden}.reveal .fragment.semi-fade-out{opacity:1;visibility:inherit}.reveal .fragment.semi-fade-out.visible{opacity:.5;visibility:inherit}.reveal .fragment.strike{opacity:1;visibility:inherit}.reveal .fragment.strike.visible{text-decoration:line-through}.reveal .fragment.fade-up{transform:translate(0,40px)}.reveal .fragment.fade-up.visible{transform:translate(0,0)}.reveal .fragment.fade-down{transform:translate(0,-40px)}.reveal .fragment.fade-down.visible{transform:translate(0,0)}.reveal .fragment.fade-right{transform:translate(-40px,0)}.reveal .fragment.fade-right.visible{transform:translate(0,0)}.reveal .fragment.fade-left{transform:translate(40px,0)}.reveal .fragment.fade-left.visible{transform:translate(0,0)}.reveal .fragment.current-visible,.reveal .fragment.fade-in-then-out{opacity:0;visibility:hidden}.reveal .fragment.current-visible.current-fragment,.reveal .fragment.fade-in-then-out.current-fragment{opacity:1;visibility:inherit}.reveal .fragment.fade-in-then-semi-out{opacity:0;visibility:hidden}.reveal .fragment.fade-in-then-semi-out.visible{opacity:.5;visibility:inherit}.reveal .fragment.fade-in-then-semi-out.current-fragment{opacity:1;visibility:inherit}.reveal .fragment.highlight-blue,.reveal .fragment.highlight-current-blue,.reveal .fragment.highlight-current-green,.reveal .fragment.highlight-current-red,.reveal .fragment.highlight-green,.reveal .fragment.highlight-red{opacity:1;visibility:inherit}.reveal .fragment.highlight-red.visible{color:#ff2c2d}.reveal .fragment.highlight-green.visible{color:#17ff2e}.reveal .fragment.highlight-blue.visible{color:#1b91ff}.reveal .fragment.highlight-current-red.current-fragment{color:#ff2c2d}.reveal .fragment.highlight-current-green.current-fragment{color:#17ff2e}.reveal .fragment.highlight-current-blue.current-fragment{color:#1b91ff}.reveal:after{content:"";font-style:italic}.reveal iframe{z-index:1}.reveal a{position:relative}@keyframes bounce-right{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(10px)}30%{transform:translateX(-5px)}}@keyframes bounce-left{0%,10%,25%,40%,50%{transform:translateX(0)}20%{transform:translateX(-10px)}30%{transform:translateX(5px)}}@keyframes bounce-down{0%,10%,25%,40%,50%{transform:translateY(0)}20%{transform:translateY(10px)}30%{transform:translateY(-5px)}}.reveal .controls{display:none;position:absolute;top:auto;bottom:12px;right:12px;left:auto;z-index:11;color:#000;pointer-events:none;font-size:10px}.reveal .controls button{position:absolute;padding:0;background-color:transparent;border:0;outline:0;cursor:pointer;color:currentColor;transform:scale(.9999);transition:color .2s ease,opacity .2s ease,transform .2s ease;z-index:2;pointer-events:auto;font-size:inherit;visibility:hidden;opacity:0;-webkit-appearance:none;-webkit-tap-highlight-color:transparent}.reveal .controls .controls-arrow:after,.reveal .controls .controls-arrow:before{content:"";position:absolute;top:0;left:0;width:2.6em;height:.5em;border-radius:.25em;background-color:currentColor;transition:all .15s ease,background-color .8s ease;transform-origin:.2em 50%;will-change:transform}.reveal .controls .controls-arrow{position:relative;width:3.6em;height:3.6em}.reveal .controls .controls-arrow:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal .controls .controls-arrow:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}.reveal .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(40deg)}.reveal .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-40deg)}.reveal .controls .controls-arrow:active:before{transform:translateX(.5em) translateY(1.55em) rotate(36deg)}.reveal .controls .controls-arrow:active:after{transform:translateX(.5em) translateY(1.55em) rotate(-36deg)}.reveal .controls .navigate-left{right:6.4em;bottom:3.2em;transform:translateX(-10px)}.reveal .controls .navigate-left.highlight{animation:bounce-left 2s 50 both ease-out}.reveal .controls .navigate-right{right:0;bottom:3.2em;transform:translateX(10px)}.reveal .controls .navigate-right .controls-arrow{transform:rotate(180deg)}.reveal .controls .navigate-right.highlight{animation:bounce-right 2s 50 both ease-out}.reveal .controls .navigate-up{right:3.2em;bottom:6.4em;transform:translateY(-10px)}.reveal .controls .navigate-up .controls-arrow{transform:rotate(90deg)}.reveal .controls .navigate-down{right:3.2em;bottom:-1.4em;padding-bottom:1.4em;transform:translateY(10px)}.reveal .controls .navigate-down .controls-arrow{transform:rotate(-90deg)}.reveal .controls .navigate-down.highlight{animation:bounce-down 2s 50 both ease-out}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled{opacity:.3}.reveal .controls[data-controls-back-arrows=faded] .navigate-up.enabled:hover{opacity:1}.reveal .controls[data-controls-back-arrows=hidden] .navigate-up.enabled{opacity:0;visibility:hidden}.reveal .controls .enabled{visibility:visible;opacity:.9;cursor:pointer;transform:none}.reveal .controls .enabled.fragmented{opacity:.5}.reveal .controls .enabled.fragmented:hover,.reveal .controls .enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled{opacity:.3}.reveal:not(.rtl) .controls[data-controls-back-arrows=faded] .navigate-left.enabled:hover{opacity:1}.reveal:not(.rtl) .controls[data-controls-back-arrows=hidden] .navigate-left.enabled{opacity:0;visibility:hidden}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled{opacity:.3}.reveal.rtl .controls[data-controls-back-arrows=faded] .navigate-right.enabled:hover{opacity:1}.reveal.rtl .controls[data-controls-back-arrows=hidden] .navigate-right.enabled{opacity:0;visibility:hidden}.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-down,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-up{display:none}.reveal:not(.has-vertical-slides) .controls .navigate-left,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-left{bottom:1.4em;right:5.5em}.reveal:not(.has-vertical-slides) .controls .navigate-right,.reveal[data-navigation-mode=linear].has-horizontal-slides .navigate-right{bottom:1.4em;right:.5em}.reveal:not(.has-horizontal-slides) .controls .navigate-up{right:1.4em;bottom:5em}.reveal:not(.has-horizontal-slides) .controls .navigate-down{right:1.4em;bottom:.5em}.reveal.has-dark-background .controls{color:#fff}.reveal.has-light-background .controls{color:#000}.reveal.no-hover .controls .controls-arrow:active:before,.reveal.no-hover .controls .controls-arrow:hover:before{transform:translateX(.5em) translateY(1.55em) rotate(45deg)}.reveal.no-hover .controls .controls-arrow:active:after,.reveal.no-hover .controls .controls-arrow:hover:after{transform:translateX(.5em) translateY(1.55em) rotate(-45deg)}@media screen and (min-width:500px){.reveal .controls[data-controls-layout=edges]{top:0;right:0;bottom:0;left:0}.reveal .controls[data-controls-layout=edges] .navigate-down,.reveal .controls[data-controls-layout=edges] .navigate-left,.reveal .controls[data-controls-layout=edges] .navigate-right,.reveal .controls[data-controls-layout=edges] .navigate-up{bottom:auto;right:auto}.reveal .controls[data-controls-layout=edges] .navigate-left{top:50%;left:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-right{top:50%;right:.8em;margin-top:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-up{top:.8em;left:50%;margin-left:-1.8em}.reveal .controls[data-controls-layout=edges] .navigate-down{bottom:-.3em;left:50%;margin-left:-1.8em}}.reveal .progress{position:absolute;display:none;height:3px;width:100%;bottom:0;left:0;z-index:10;background-color:rgba(0,0,0,.2);color:#fff}.reveal .progress:after{content:"";display:block;position:absolute;height:10px;width:100%;top:-10px}.reveal .progress span{display:block;height:100%;width:100%;background-color:currentColor;transition:transform .8s cubic-bezier(.26,.86,.44,.985);transform-origin:0 0;transform:scaleX(0)}.reveal .slide-number{position:absolute;display:block;right:8px;bottom:8px;z-index:31;font-family:Helvetica,sans-serif;font-size:12px;line-height:1;color:#fff;background-color:rgba(0,0,0,.4);padding:5px}.reveal .slide-number a{color:currentColor}.reveal .slide-number-delimiter{margin:0 3px}.reveal{position:relative;width:100%;height:100%;overflow:hidden;touch-action:pinch-zoom}.reveal.embedded{touch-action:pan-y}.reveal .slides{position:absolute;width:100%;height:100%;top:0;right:0;bottom:0;left:0;margin:auto;pointer-events:none;overflow:visible;z-index:1;text-align:center;perspective:600px;perspective-origin:50% 40%}.reveal .slides>section{perspective:600px}.reveal .slides>section,.reveal .slides>section>section{display:none;position:absolute;width:100%;pointer-events:auto;z-index:10;transform-style:flat;transition:transform-origin .8s cubic-bezier(.26,.86,.44,.985),transform .8s cubic-bezier(.26,.86,.44,.985),visibility .8s cubic-bezier(.26,.86,.44,.985),opacity .8s cubic-bezier(.26,.86,.44,.985)}.reveal[data-transition-speed=fast] .slides section{transition-duration:.4s}.reveal[data-transition-speed=slow] .slides section{transition-duration:1.2s}.reveal .slides section[data-transition-speed=fast]{transition-duration:.4s}.reveal .slides section[data-transition-speed=slow]{transition-duration:1.2s}.reveal .slides>section.stack{padding-top:0;padding-bottom:0;pointer-events:none;height:100%}.reveal .slides>section.present,.reveal .slides>section>section.present{display:block;z-index:11;opacity:1}.reveal .slides>section:empty,.reveal .slides>section>section:empty,.reveal .slides>section>section[data-background-interactive],.reveal .slides>section[data-background-interactive]{pointer-events:none}.reveal.center,.reveal.center .slides,.reveal.center .slides section{min-height:0!important}.reveal .slides>section:not(.present),.reveal .slides>section>section:not(.present){pointer-events:none}.reveal.overview .slides>section,.reveal.overview .slides>section>section{pointer-events:auto}.reveal .slides>section.future,.reveal .slides>section.future>section,.reveal .slides>section.past,.reveal .slides>section.past>section,.reveal .slides>section>section.future,.reveal .slides>section>section.past{opacity:0}.reveal .slides>section[data-transition=slide].past,.reveal .slides>section[data-transition~=slide-out].past,.reveal.slide .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=slide].future,.reveal .slides>section[data-transition~=slide-in].future,.reveal.slide .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=slide].past,.reveal .slides>section>section[data-transition~=slide-out].past,.reveal.slide .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=slide].future,.reveal .slides>section>section[data-transition~=slide-in].future,.reveal.slide .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal .slides>section[data-transition=linear].past,.reveal .slides>section[data-transition~=linear-out].past,.reveal.linear .slides>section:not([data-transition]).past{transform:translate(-150%,0)}.reveal .slides>section[data-transition=linear].future,.reveal .slides>section[data-transition~=linear-in].future,.reveal.linear .slides>section:not([data-transition]).future{transform:translate(150%,0)}.reveal .slides>section>section[data-transition=linear].past,.reveal .slides>section>section[data-transition~=linear-out].past,.reveal.linear .slides>section>section:not([data-transition]).past{transform:translate(0,-150%)}.reveal .slides>section>section[data-transition=linear].future,.reveal .slides>section>section[data-transition~=linear-in].future,.reveal.linear .slides>section>section:not([data-transition]).future{transform:translate(0,150%)}.reveal .slides section[data-transition=default].stack,.reveal.default .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=default].past,.reveal .slides>section[data-transition~=default-out].past,.reveal.default .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=default].future,.reveal .slides>section[data-transition~=default-in].future,.reveal.default .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=default].past,.reveal .slides>section>section[data-transition~=default-out].past,.reveal.default .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=default].future,.reveal .slides>section>section[data-transition~=default-in].future,.reveal.default .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=convex].stack,.reveal.convex .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=convex].past,.reveal .slides>section[data-transition~=convex-out].past,.reveal.convex .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=convex].future,.reveal .slides>section[data-transition~=convex-in].future,.reveal.convex .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=convex].past,.reveal .slides>section>section[data-transition~=convex-out].past,.reveal.convex .slides>section>section:not([data-transition]).past{transform:translate3d(0,-300px,0) rotateX(70deg) translate3d(0,-300px,0)}.reveal .slides>section>section[data-transition=convex].future,.reveal .slides>section>section[data-transition~=convex-in].future,.reveal.convex .slides>section>section:not([data-transition]).future{transform:translate3d(0,300px,0) rotateX(-70deg) translate3d(0,300px,0)}.reveal .slides section[data-transition=concave].stack,.reveal.concave .slides section.stack{transform-style:preserve-3d}.reveal .slides>section[data-transition=concave].past,.reveal .slides>section[data-transition~=concave-out].past,.reveal.concave .slides>section:not([data-transition]).past{transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal .slides>section[data-transition=concave].future,.reveal .slides>section[data-transition~=concave-in].future,.reveal.concave .slides>section:not([data-transition]).future{transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal .slides>section>section[data-transition=concave].past,.reveal .slides>section>section[data-transition~=concave-out].past,.reveal.concave .slides>section>section:not([data-transition]).past{transform:translate3d(0,-80%,0) rotateX(-70deg) translate3d(0,-80%,0)}.reveal .slides>section>section[data-transition=concave].future,.reveal .slides>section>section[data-transition~=concave-in].future,.reveal.concave .slides>section>section:not([data-transition]).future{transform:translate3d(0,80%,0) rotateX(70deg) translate3d(0,80%,0)}.reveal .slides section[data-transition=zoom],.reveal.zoom .slides section:not([data-transition]){transition-timing-function:ease}.reveal .slides>section[data-transition=zoom].past,.reveal .slides>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section:not([data-transition]).past{visibility:hidden;transform:scale(16)}.reveal .slides>section[data-transition=zoom].future,.reveal .slides>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section:not([data-transition]).future{visibility:hidden;transform:scale(.2)}.reveal .slides>section>section[data-transition=zoom].past,.reveal .slides>section>section[data-transition~=zoom-out].past,.reveal.zoom .slides>section>section:not([data-transition]).past{transform:scale(16)}.reveal .slides>section>section[data-transition=zoom].future,.reveal .slides>section>section[data-transition~=zoom-in].future,.reveal.zoom .slides>section>section:not([data-transition]).future{transform:scale(.2)}.reveal.cube .slides{perspective:1300px}.reveal.cube .slides section{padding:30px;min-height:700px;backface-visibility:hidden;box-sizing:border-box;transform-style:preserve-3d}.reveal.center.cube .slides section{min-height:0}.reveal.cube .slides section:not(.stack):before{content:"";position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);border-radius:4px;transform:translateZ(-20px)}.reveal.cube .slides section:not(.stack):after{content:"";position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);transform:translateZ(-90px) rotateX(65deg)}.reveal.cube .slides>section.stack{padding:0;background:0 0}.reveal.cube .slides>section.past{transform-origin:100% 0;transform:translate3d(-100%,0,0) rotateY(-90deg)}.reveal.cube .slides>section.future{transform-origin:0 0;transform:translate3d(100%,0,0) rotateY(90deg)}.reveal.cube .slides>section>section.past{transform-origin:0 100%;transform:translate3d(0,-100%,0) rotateX(90deg)}.reveal.cube .slides>section>section.future{transform-origin:0 0;transform:translate3d(0,100%,0) rotateX(-90deg)}.reveal.page .slides{perspective-origin:0 50%;perspective:3000px}.reveal.page .slides section{padding:30px;min-height:700px;box-sizing:border-box;transform-style:preserve-3d}.reveal.page .slides section.past{z-index:12}.reveal.page .slides section:not(.stack):before{content:"";position:absolute;display:block;width:100%;height:100%;left:0;top:0;background:rgba(0,0,0,.1);transform:translateZ(-20px)}.reveal.page .slides section:not(.stack):after{content:"";position:absolute;display:block;width:90%;height:30px;left:5%;bottom:0;background:0 0;z-index:1;border-radius:4px;box-shadow:0 95px 25px rgba(0,0,0,.2);-webkit-transform:translateZ(-90px) rotateX(65deg)}.reveal.page .slides>section.stack{padding:0;background:0 0}.reveal.page .slides>section.past{transform-origin:0 0;transform:translate3d(-40%,0,0) rotateY(-80deg)}.reveal.page .slides>section.future{transform-origin:100% 0;transform:translate3d(0,0,0)}.reveal.page .slides>section>section.past{transform-origin:0 0;transform:translate3d(0,-40%,0) rotateX(80deg)}.reveal.page .slides>section>section.future{transform-origin:0 100%;transform:translate3d(0,0,0)}.reveal .slides section[data-transition=fade],.reveal.fade .slides section:not([data-transition]),.reveal.fade .slides>section>section:not([data-transition]){transform:none;transition:opacity .5s}.reveal.fade.overview .slides section,.reveal.fade.overview .slides>section>section{transition:none}.reveal .slides section[data-transition=none],.reveal.none .slides section:not([data-transition]){transform:none;transition:none}.reveal .pause-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;visibility:hidden;opacity:0;z-index:100;transition:all 1s ease}.reveal .pause-overlay .resume-button{position:absolute;bottom:20px;right:20px;color:#ccc;border-radius:2px;padding:6px 14px;border:2px solid #ccc;font-size:16px;background:0 0;cursor:pointer}.reveal .pause-overlay .resume-button:hover{color:#fff;border-color:#fff}.reveal.paused .pause-overlay{visibility:visible;opacity:1}.reveal .no-transition,.reveal .no-transition *,.reveal .slides.disable-slide-transitions section{transition:none!important}.reveal .slides.disable-slide-transitions section{transform:none!important}.reveal .backgrounds{position:absolute;width:100%;height:100%;top:0;left:0;perspective:600px}.reveal .slide-background{display:none;position:absolute;width:100%;height:100%;opacity:0;visibility:hidden;overflow:hidden;background-color:rgba(0,0,0,0);transition:all .8s cubic-bezier(.26,.86,.44,.985)}.reveal .slide-background-content{position:absolute;width:100%;height:100%;background-position:50% 50%;background-repeat:no-repeat;background-size:cover}.reveal .slide-background.stack{display:block}.reveal .slide-background.present{opacity:1;visibility:visible;z-index:2}.print-pdf .reveal .slide-background{opacity:1!important;visibility:visible!important}.reveal .slide-background video{position:absolute;width:100%;height:100%;max-width:none;max-height:none;top:0;left:0;object-fit:cover}.reveal .slide-background[data-background-size=contain] video{object-fit:contain}.reveal>.backgrounds .slide-background[data-background-transition=none],.reveal[data-background-transition=none]>.backgrounds .slide-background:not([data-background-transition]){transition:none}.reveal>.backgrounds .slide-background[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background:not([data-background-transition]){opacity:1}.reveal>.backgrounds .slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.past:not([data-background-transition]){transform:translate(-100%,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background.future:not([data-background-transition]){transform:translate(100%,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){transform:translate(0,-100%)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=slide],.reveal[data-background-transition=slide]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){transform:translate(0,100%)}.reveal>.backgrounds .slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(-100%,0,0) rotateY(-90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(100%,0,0) rotateY(90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(0,-100%,0) rotateX(90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=convex],.reveal[data-background-transition=convex]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(0,100%,0) rotateX(-90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(-100%,0,0) rotateY(90deg) translate3d(-100%,0,0)}.reveal>.backgrounds .slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(100%,0,0) rotateY(-90deg) translate3d(100%,0,0)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){opacity:0;transform:translate3d(0,-100%,0) rotateX(-90deg) translate3d(0,-100%,0)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=concave],.reveal[data-background-transition=concave]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){opacity:0;transform:translate3d(0,100%,0) rotateX(90deg) translate3d(0,100%,0)}.reveal>.backgrounds .slide-background[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background:not([data-background-transition]){transition-timing-function:ease}.reveal>.backgrounds .slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.past:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background.future:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.backgrounds .slide-background>.slide-background.past[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.past:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(16)}.reveal>.backgrounds .slide-background>.slide-background.future[data-background-transition=zoom],.reveal[data-background-transition=zoom]>.backgrounds .slide-background>.slide-background.future:not([data-background-transition]){opacity:0;visibility:hidden;transform:scale(.2)}.reveal[data-transition-speed=fast]>.backgrounds .slide-background{transition-duration:.4s}.reveal[data-transition-speed=slow]>.backgrounds .slide-background{transition-duration:1.2s}.reveal [data-auto-animate-target^=unmatched]{will-change:opacity}.reveal section[data-auto-animate]:not(.stack):not([data-auto-animate=running]) [data-auto-animate-target^=unmatched]{opacity:0}.reveal.overview{perspective-origin:50% 50%;perspective:700px}.reveal.overview .slides{-moz-transform-style:preserve-3d}.reveal.overview .slides section{height:100%;top:0!important;opacity:1!important;overflow:hidden;visibility:visible!important;cursor:pointer;box-sizing:border-box}.reveal.overview .slides section.present,.reveal.overview .slides section:hover{outline:10px solid rgba(150,150,150,.4);outline-offset:10px}.reveal.overview .slides section .fragment{opacity:1;transition:none}.reveal.overview .slides section:after,.reveal.overview .slides section:before{display:none!important}.reveal.overview .slides>section.stack{padding:0;top:0!important;background:0 0;outline:0;overflow:visible}.reveal.overview .backgrounds{perspective:inherit;-moz-transform-style:preserve-3d}.reveal.overview .backgrounds .slide-background{opacity:1;visibility:visible;outline:10px solid rgba(150,150,150,.1);outline-offset:10px}.reveal.overview .backgrounds .slide-background.stack{overflow:visible}.reveal.overview .slides section,.reveal.overview-deactivating .slides section{transition:none}.reveal.overview .backgrounds .slide-background,.reveal.overview-deactivating .backgrounds .slide-background{transition:none}.reveal.rtl .slides,.reveal.rtl .slides h1,.reveal.rtl .slides h2,.reveal.rtl .slides h3,.reveal.rtl .slides h4,.reveal.rtl .slides h5,.reveal.rtl .slides h6{direction:rtl;font-family:sans-serif}.reveal.rtl code,.reveal.rtl pre{direction:ltr}.reveal.rtl ol,.reveal.rtl ul{text-align:right}.reveal.rtl .progress span{transform-origin:100% 0}.reveal.has-parallax-background .backgrounds{transition:all .8s ease}.reveal.has-parallax-background[data-transition-speed=fast] .backgrounds{transition-duration:.4s}.reveal.has-parallax-background[data-transition-speed=slow] .backgrounds{transition-duration:1.2s}.reveal>.overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1000;background:rgba(0,0,0,.9);transition:all .3s ease}.reveal>.overlay .spinner{position:absolute;display:block;top:50%;left:50%;width:32px;height:32px;margin:-16px 0 0 -16px;z-index:10;background-image:url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);visibility:visible;opacity:.6;transition:all .3s ease}.reveal>.overlay header{position:absolute;left:0;top:0;width:100%;padding:5px;z-index:2;box-sizing:border-box}.reveal>.overlay header a{display:inline-block;width:40px;height:40px;line-height:36px;padding:0 10px;float:right;opacity:.6;box-sizing:border-box}.reveal>.overlay header a:hover{opacity:1}.reveal>.overlay header a .icon{display:inline-block;width:20px;height:20px;background-position:50% 50%;background-size:100%;background-repeat:no-repeat}.reveal>.overlay header a.close .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC)}.reveal>.overlay header a.external .icon{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==)}.reveal>.overlay .viewport{position:absolute;display:flex;top:50px;right:0;bottom:0;left:0}.reveal>.overlay.overlay-preview .viewport iframe{width:100%;height:100%;max-width:100%;max-height:100%;border:0;opacity:0;visibility:hidden;transition:all .3s ease}.reveal>.overlay.overlay-preview.loaded .viewport iframe{opacity:1;visibility:visible}.reveal>.overlay.overlay-preview.loaded .viewport-inner{position:absolute;z-index:-1;left:0;top:45%;width:100%;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-preview .x-frame-error{opacity:0;transition:opacity .3s ease .3s}.reveal>.overlay.overlay-preview.loaded .x-frame-error{opacity:1}.reveal>.overlay.overlay-preview.loaded .spinner{opacity:0;visibility:hidden;transform:scale(.2)}.reveal>.overlay.overlay-help .viewport{overflow:auto;color:#fff}.reveal>.overlay.overlay-help .viewport .viewport-inner{width:600px;margin:auto;padding:20px 20px 80px 20px;text-align:center;letter-spacing:normal}.reveal>.overlay.overlay-help .viewport .viewport-inner .title{font-size:20px}.reveal>.overlay.overlay-help .viewport .viewport-inner table{border:1px solid #fff;border-collapse:collapse;font-size:16px}.reveal>.overlay.overlay-help .viewport .viewport-inner table td,.reveal>.overlay.overlay-help .viewport .viewport-inner table th{width:200px;padding:14px;border:1px solid #fff;vertical-align:middle}.reveal>.overlay.overlay-help .viewport .viewport-inner table th{padding-top:20px;padding-bottom:20px}.reveal .playback{position:absolute;left:15px;bottom:20px;z-index:30;cursor:pointer;transition:all .4s ease;-webkit-tap-highlight-color:transparent}.reveal.overview .playback{opacity:0;visibility:hidden}.reveal .hljs{min-height:100%}.reveal .hljs table{margin:initial}.reveal .hljs-ln-code,.reveal .hljs-ln-numbers{padding:0;border:0}.reveal .hljs-ln-numbers{opacity:.6;padding-right:.75em;text-align:right;vertical-align:top}.reveal .hljs.has-highlights tr:not(.highlight-line){opacity:.4}.reveal .hljs.has-highlights.fragment{transition:all .2s ease}.reveal .hljs:not(:first-child).fragment{position:absolute;top:0;left:0;width:100%;box-sizing:border-box}.reveal pre[data-auto-animate-target]{overflow:hidden}.reveal pre[data-auto-animate-target] code{height:100%}.reveal .roll{display:inline-block;line-height:1.2;overflow:hidden;vertical-align:top;perspective:400px;perspective-origin:50% 50%}.reveal .roll:hover{background:0 0;text-shadow:none}.reveal .roll span{display:block;position:relative;padding:0 2px;pointer-events:none;transition:all .4s ease;transform-origin:50% 0;transform-style:preserve-3d;backface-visibility:hidden}.reveal .roll:hover span{background:rgba(0,0,0,.5);transform:translate3d(0,0,-45px) rotateX(90deg)}.reveal .roll span:after{content:attr(data-title);display:block;position:absolute;left:0;top:0;padding:0 2px;backface-visibility:hidden;transform-origin:50% 0;transform:translate3d(0,110%,0) rotateX(-90deg)}.reveal aside.notes{display:none}.reveal .speaker-notes{display:none;position:absolute;width:33.3333333333%;height:100%;top:0;left:100%;padding:14px 18px 14px 18px;z-index:1;font-size:18px;line-height:1.4;border:1px solid rgba(0,0,0,.05);color:#222;background-color:#f5f5f5;overflow:auto;box-sizing:border-box;text-align:left;font-family:Helvetica,sans-serif;-webkit-overflow-scrolling:touch}.reveal .speaker-notes .notes-placeholder{color:#ccc;font-style:italic}.reveal .speaker-notes:focus{outline:0}.reveal .speaker-notes:before{content:"Speaker notes";display:block;margin-bottom:10px;opacity:.5}.reveal.show-notes{max-width:75%;overflow:visible}.reveal.show-notes .speaker-notes{display:block}@media screen and (min-width:1600px){.reveal .speaker-notes{font-size:20px}}@media screen and (max-width:1024px){.reveal.show-notes{border-left:0;max-width:none;max-height:70%;max-height:70vh;overflow:visible}.reveal.show-notes .speaker-notes{top:100%;left:0;width:100%;height:30vh;border:0}}@media screen and (max-width:600px){.reveal.show-notes{max-height:60%;max-height:60vh}.reveal.show-notes .speaker-notes{top:100%;height:40vh}.reveal .speaker-notes{font-size:14px}}.reveal .jump-to-slide{position:absolute;top:15px;left:15px;z-index:30;font-size:32px;-webkit-tap-highlight-color:transparent}.reveal .jump-to-slide-input{background:0 0;padding:8px;font-size:inherit;color:currentColor;border:0}.reveal .jump-to-slide-input::placeholder{color:currentColor;opacity:.5}.reveal.has-dark-background .jump-to-slide-input{color:#fff}.reveal.has-light-background .jump-to-slide-input{color:#222}.reveal .jump-to-slide-input:focus{outline:0}.zoomed .reveal *,.zoomed .reveal :after,.zoomed .reveal :before{backface-visibility:visible!important}.zoomed .reveal .controls,.zoomed .reveal .progress{opacity:0}.zoomed .reveal .roll span{background:0 0}.zoomed .reveal .roll span:after{visibility:hidden}html.print-pdf *{-webkit-print-color-adjust:exact}html.print-pdf{width:100%;height:100%;overflow:visible}html.print-pdf body{margin:0 auto!important;border:0;padding:0;float:none!important;overflow:visible}html.print-pdf .nestedarrow,html.print-pdf .reveal .controls,html.print-pdf .reveal .playback,html.print-pdf .reveal .progress,html.print-pdf .reveal.overview,html.print-pdf .state-background{display:none!important}html.print-pdf .reveal pre code{overflow:hidden!important}html.print-pdf .reveal{width:auto!important;height:auto!important;overflow:hidden!important}html.print-pdf .reveal .slides{position:static;width:100%!important;height:auto!important;zoom:1!important;pointer-events:initial;left:auto;top:auto;margin:0!important;padding:0!important;overflow:visible;display:block;perspective:none;perspective-origin:50% 50%}html.print-pdf .reveal .slides .pdf-page{position:relative;overflow:hidden;z-index:1;page-break-after:always}html.print-pdf .reveal .slides section{visibility:visible!important;display:block!important;position:absolute!important;margin:0!important;padding:0!important;box-sizing:border-box!important;min-height:1px;opacity:1!important;transform-style:flat!important;transform:none!important}html.print-pdf .reveal section.stack{position:relative!important;margin:0!important;padding:0!important;page-break-after:avoid!important;height:auto!important;min-height:auto!important}html.print-pdf .reveal img{box-shadow:none}html.print-pdf .reveal .backgrounds{display:none}html.print-pdf .reveal .slide-background{display:block!important;position:absolute;top:0;left:0;width:100%;height:100%;z-index:auto!important}html.print-pdf .reveal.show-notes{max-width:none;max-height:none}html.print-pdf .reveal .speaker-notes-pdf{display:block;width:100%;height:auto;max-height:none;top:auto;right:auto;bottom:auto;left:auto;z-index:100}html.print-pdf .reveal .speaker-notes-pdf[data-layout=separate-page]{position:relative;color:inherit;background-color:transparent;padding:20px;page-break-after:always;border:0}html.print-pdf .reveal .slide-number-pdf{display:block;position:absolute;font-size:14px}html.print-pdf .aria-status{display:none}@media print{html:not(.print-pdf){overflow:visible;width:auto;height:auto}html:not(.print-pdf) body{margin:0;padding:0;overflow:visible}html:not(.print-pdf) .reveal{background:#fff;font-size:20pt}html:not(.print-pdf) .reveal .backgrounds,html:not(.print-pdf) .reveal .controls,html:not(.print-pdf) .reveal .progress,html:not(.print-pdf) .reveal .slide-number,html:not(.print-pdf) .reveal .state-background{display:none!important}html:not(.print-pdf) .reveal li,html:not(.print-pdf) .reveal p,html:not(.print-pdf) .reveal td{font-size:20pt!important;color:#000}html:not(.print-pdf) .reveal h1,html:not(.print-pdf) .reveal h2,html:not(.print-pdf) .reveal h3,html:not(.print-pdf) .reveal h4,html:not(.print-pdf) .reveal h5,html:not(.print-pdf) .reveal h6{color:#000!important;height:auto;line-height:normal;text-align:left;letter-spacing:normal}html:not(.print-pdf) .reveal h1{font-size:28pt!important}html:not(.print-pdf) .reveal h2{font-size:24pt!important}html:not(.print-pdf) .reveal h3{font-size:22pt!important}html:not(.print-pdf) .reveal h4{font-size:22pt!important;font-variant:small-caps}html:not(.print-pdf) .reveal h5{font-size:21pt!important}html:not(.print-pdf) .reveal h6{font-size:20pt!important;font-style:italic}html:not(.print-pdf) .reveal a:link,html:not(.print-pdf) .reveal a:visited{color:#000!important;font-weight:700;text-decoration:underline}html:not(.print-pdf) .reveal div,html:not(.print-pdf) .reveal ol,html:not(.print-pdf) .reveal p,html:not(.print-pdf) .reveal ul{visibility:visible;position:static;width:auto;height:auto;display:block;overflow:visible;margin:0;text-align:left!important}html:not(.print-pdf) .reveal pre,html:not(.print-pdf) .reveal table{margin-left:0;margin-right:0}html:not(.print-pdf) .reveal pre code{padding:20px}html:not(.print-pdf) .reveal blockquote{margin:20px 0}html:not(.print-pdf) .reveal .slides{position:static!important;width:auto!important;height:auto!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:0!important;zoom:1!important;transform:none!important;overflow:visible!important;display:block!important;text-align:left!important;perspective:none;perspective-origin:50% 50%}html:not(.print-pdf) .reveal .slides section{visibility:visible!important;position:static!important;width:auto!important;height:auto!important;display:block!important;overflow:visible!important;left:0!important;top:0!important;margin-left:0!important;margin-top:0!important;padding:60px 20px!important;z-index:auto!important;opacity:1!important;page-break-after:always!important;transform-style:flat!important;transform:none!important;transition:none!important}html:not(.print-pdf) .reveal .slides section.stack{padding:0!important}html:not(.print-pdf) .reveal .slides section:last-of-type{page-break-after:avoid!important}html:not(.print-pdf) .reveal .slides section .fragment{opacity:1!important;visibility:visible!important;transform:none!important}html:not(.print-pdf) .reveal .r-fit-text{white-space:normal!important}html:not(.print-pdf) .reveal section img{display:block;margin:15px 0;background:#fff;border:1px solid #666;box-shadow:none}html:not(.print-pdf) .reveal section small{font-size:.8em}html:not(.print-pdf) .reveal .hljs{max-height:100%;white-space:pre-wrap;word-wrap:break-word;word-break:break-word;font-size:15pt}html:not(.print-pdf) .reveal .hljs .hljs-ln-numbers{white-space:nowrap}html:not(.print-pdf) .reveal .hljs td{font-size:inherit!important;color:inherit!important}}
+</style>
+<style>
+
+:root{
+  --bg:#1b1410; --bg-alt:#241a14; --surface:#2c2019; --surface-2:#372718;
+  --text:#f2e9de; --text-dim:#c9b8a4; --muted:#8a7566;
+  --accent:#e8a33d; --accent-soft:#f0c383; --accent-2:#6fa88f; --danger:#c1604b;
+  --code-bg:#140e0b; --border:#4a3626;
+  color-scheme: dark;
+}
+html,body{height:100%; background:var(--bg);}
+body{margin:0; overflow:hidden;}
+.reveal{ font-family:'Sarabun',system-ui,sans-serif; color:var(--text); background:var(--bg); }
+.reveal .slides{ text-align:left; }
+.reveal .slides section{
+  background:var(--bg);
+  height:100%;
+  box-sizing:border-box;
+}
+.slide-inner{
+  padding:3.4em 4.4em;
+  box-sizing:border-box;
+  height:100%;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.reveal h1,.reveal h2,.reveal h3{
+  font-family:'Taviraj',serif; font-weight:700; text-transform:none;
+  text-shadow:none; letter-spacing:0; text-wrap:balance; margin:0 0 .3em 0; color:var(--text);
+}
+.reveal h1{ font-size:1.9em; font-weight:900; }
+.reveal h2{ font-size:1.3em; font-weight:700; }
+.reveal h3{ font-size:1.0em; font-weight:600; color:var(--accent-soft); }
+.reveal p,.reveal li{ font-size:.6em; line-height:1.55; color:var(--text-dim); }
+.reveal strong{ color:var(--accent-soft); font-weight:700; }
+.reveal a{ color:var(--accent); }
+.reveal .controls{ color:var(--accent); }
+.reveal .progress{ color:var(--accent); background-color:rgba(255,255,255,.08); height:4px; }
+.reveal .slide-number{ background-color:transparent; color:var(--muted); font-family:'JetBrains Mono',monospace; }
+
+.eyebrow{
+  font-family:'JetBrains Mono',monospace; font-size:.4em; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 .8em 0; display:flex; align-items:center; gap:.6em;
+}
+.eyebrow::before{ content:""; width:1.6em; height:2px; background:var(--accent); display:inline-block; }
+.file-tag{
+  font-family:'JetBrains Mono',monospace; font-size:.48em; color:var(--bg);
+  background:var(--accent); padding:.25em .7em; border-radius:.3em; font-weight:600;
+}
+
+.code-panel{
+  background:var(--code-bg); border:1px solid var(--border); border-radius:10px;
+  padding:1.0em 1.2em; overflow:auto; box-shadow:0 6px 18px rgba(0,0,0,.35); max-height:100%;
+}
+.code-panel pre{ margin:0; }
+.code-panel code{
+  font-family:'JetBrains Mono',monospace; font-size:.48em; line-height:1.6;
+  color:#e9dcc9; white-space:pre; display:block;
+}
+.code-panel .c-hl{ background:rgba(232,163,61,.18); display:inline; border-radius:3px; box-shadow:0 0 0 2px rgba(232,163,61,.18); }
+
+.two-col{ display:grid; grid-template-columns:1.2fr .8fr; gap:2em; align-items:center; align-content:center; flex:1; min-height:0; }
+.two-col > *{ min-width:0; }
+.stack{ display:flex; flex-direction:column; gap:.9em; }
+.explain-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.8em; }
+.explain-list li{ padding-left:1.3em; position:relative; font-size:.6em; line-height:1.5; color:var(--text-dim); }
+.explain-list li::before{ content:"\\2192"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+.explain-list li strong{ color:var(--accent-soft); }
+
+.title-slide{ justify-content:center; align-items:flex-start; gap:.35em; }
+.title-slide .kicker{ font-family:'JetBrains Mono',monospace; color:var(--accent-2); font-size:.55em; letter-spacing:.12em; }
+.title-slide h1{ font-size:2.5em; max-width:11em; }
+.title-slide .sub{ font-size:.72em; color:var(--text-dim); max-width:32em; line-height:1.6; }
+.title-slide .meta-row{ margin-top:1.4em; font-family:'JetBrains Mono',monospace; font-size:.48em; color:var(--muted); }
+.title-slide .meta-row b{ color:var(--accent-soft); font-weight:600; }
+
+.divider-slide{ align-items:center; text-align:center; }
+.divider-slide .num{ font-family:'JetBrains Mono',monospace; color:var(--accent); font-size:.55em; letter-spacing:.2em; margin-bottom:.4em; }
+.divider-slide h1{ font-size:2.2em; }
+.divider-slide .files{ margin-top:1em; display:flex; gap:.7em; flex-wrap:wrap; justify-content:center; }
+
+.kv-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:.7em; }
+.kv-card{ background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:.9em 1.1em; }
+.kv-card .k{ font-family:'JetBrains Mono',monospace; font-size:.44em; color:var(--accent); display:block; margin-bottom:.4em; word-break:break-word; }
+.kv-card .v{ font-size:.54em; color:var(--text-dim); line-height:1.5; }
+
+.flow{ display:flex; flex-direction:column; gap:0; flex:1; justify-content:center; }
+.flow-phase-label{
+  font-family:'JetBrains Mono',monospace; font-size:.42em; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--accent-2); margin:.7em 0 .4em 0;
+}
+.flow-step{ display:grid; grid-template-columns:2.1em 1fr; gap:1em; }
+.flow-step .dot{
+  width:2.1em; height:2.1em; border-radius:50%; background:var(--surface-2); border:1px solid var(--border);
+  color:var(--accent); font-family:'JetBrains Mono',monospace; font-size:.48em; font-weight:700;
+  display:flex; align-items:center; justify-content:center; align-self:flex-start;
+}
+.flow-step .body{ border-left:2px solid var(--border); margin-left:-2.75em; padding:0 0 .8em 3.75em; }
+.flow-step:last-child .body{ border-left:2px solid transparent; }
+.flow-step .t{ font-size:.56em; color:var(--text); font-weight:600; }
+.flow-step .d{ font-size:.48em; color:var(--muted); margin-top:.15em; line-height:1.5; }
+.flow-step .t code{ font-family:'JetBrains Mono',monospace; color:var(--accent-soft); font-size:.9em; }
+
+.chip-row{ display:flex; gap:.6em; flex-wrap:wrap; margin-top:1.1em; }
+.chip{ font-family:'JetBrains Mono',monospace; font-size:.44em; color:var(--text); background:var(--surface); border:1px solid var(--border); padding:.5em .9em; border-radius:999px; }
+.big-stat{ display:flex; gap:1.6em; margin-top:.6em; flex-wrap:wrap; }
+.big-stat .item{ display:flex; flex-direction:column; }
+.big-stat .n{ font-family:'JetBrains Mono',monospace; font-size:1.25em; color:var(--accent); font-weight:700; font-variant-numeric:tabular-nums; }
+.big-stat .l{ font-size:.44em; color:var(--muted); }
+
+@media (max-width:700px){
+  .reveal .slides section{ padding:2em 1.5em; }
+  .two-col{ grid-template-columns:1fr; }
+  .kv-grid{ grid-template-columns:1fr; }
+}
+
+</style>
+
+<div class="reveal">
+  <div class="slides">
+
+<section><div class="slide-inner">
+  <div class="title-slide">
+    <div class="kicker">CODE WALKTHROUGH</div>
+    <h1>หลังบ้านทำนายกาแฟ</h1>
+    <div class="sub">ทัวร์โค้ดทั้งระบบของ <strong>ระบบทำนายเมนูกาแฟที่ลูกค้ามีแนวโน้มจะสั่งซื้อ</strong>
+    ตั้งแต่ไฟล์ข้อมูลดิบ ผ่านการเทรนโมเดล ไปจนถึงเว็บแอปที่ผู้ใช้กดปุ่มแล้วเห็นผลจริง</div>
+    <div class="meta-row">Coffe_sales.csv &rarr; <b>train_model.py</b> &rarr; coffee_model.joblib &rarr; <b>app.py</b> &rarr; browser</div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow">ภาพรวมระบบ</div>
+  <h2>สองโปรแกรมที่ไม่รู้จักกัน คุยกันผ่านไฟล์เดียว</h2>
+  <div class="kv-grid" style="margin-top:.6em;">
+    <div class="kv-card">
+      <span class="k">OFFLINE &mdash; ทำครั้งเดียว</span>
+      <span class="v"><code style="font-family:'JetBrains Mono',monospace">train_model.py</code><br>อ่าน CSV &rarr; เทรนโมเดล &rarr; ประเมินผล &rarr; เซฟไฟล์ <code style="font-family:'JetBrains Mono',monospace">.joblib</code></span>
+    </div>
+    <div class="kv-card">
+      <span class="k">ONLINE &mdash; รันตลอดเวลา</span>
+      <span class="v"><code style="font-family:'JetBrains Mono',monospace">app.py</code> + <code style="font-family:'JetBrains Mono',monospace">templates/</code> + <code style="font-family:'JetBrains Mono',monospace">static/</code><br>โหลดไฟล์โมเดล &rarr; รอรับ request &rarr; ตอบผลทำนายกลับ</span>
+    </div>
+  </div>
+  <p style="margin-top:1.1em;">จุดเชื่อมต่อเดียวระหว่างสองฝั่งคือไฟล์ <strong>model/coffee_model.joblib</strong> &mdash;
+  ไม่มีการเรียกฟังก์ชันข้ามไฟล์กันโดยตรงเลย</p>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="divider-slide">
+    <div class="num">ภาค 1 / 3</div>
+    <h1>เทรนโมเดล</h1>
+    <div class="file-tag">train_model.py</div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 17-38</div>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>import joblib
+import pandas as pd
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import top_k_accuracy_score, ...
+
+<span class="c-hl">TOP_K = 4</span>
+<span class="c-hl">FEATURES = ["Weekday", "Month_name", "Time_of_Day"]</span>
+TARGET = "coffee_name"
+
+WEEKDAY_ORDER = ["Mon", "Tue", ..., "Sun"]
+MONTH_ORDER   = ["Jan", "Feb", ..., "Dec"]</code></pre></div>
+    <div class="stack">
+      <h3>ตั้งค่าจุดเดียว ใช้ทั้งไฟล์</h3>
+      <ul class="explain-list">
+        <li><strong>FEATURES</strong> คือ 3 คอลัมน์ที่โมเดล "รู้ล่วงหน้าได้จริง" ก่อนลูกค้าสั่งเมนู</li>
+        <li>ตัด <strong>money, cash_type, hour_of_day</strong> ทิ้งตั้งแต่ตรงนี้ &mdash; ไม่ถูกอ้างถึงอีกเลย</li>
+        <li><strong>WEEKDAY_ORDER / MONTH_ORDER</strong> เก็บลำดับที่ถูกต้อง (จ.-อา.) ไว้ให้หน้าเว็บใช้สร้าง dropdown</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 41-43</div>
+  <h2>load_data() &mdash; อ่าน CSV แล้วตัดทิ้งทันที</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>def load_data(path="Coffe_sales.csv"):
+    df = pd.read_csv(path)
+    <span class="c-hl">return df[FEATURES + [TARGET]]</span></code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li>ไฟล์ดิบมี <strong>11 คอลัมน์</strong> แต่ฟังก์ชันนี้คืนกลับมาแค่ <strong>4 คอลัมน์</strong></li>
+        <li>คอลัมน์ที่เหลือ (money, Date, Time, ...) หายไปตั้งแต่จุดนี้ ไม่ต้องคอยระวังใน main() อีก</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 46-49</div>
+  <h2>build_pipeline() &mdash; แปลงข้อความเป็นตัวเลข</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>preprocessor = ColumnTransformer(
+    transformers=[
+        ("cat", OneHotEncoder(<span class="c-hl">handle_unknown="ignore"</span>), FEATURES)
+    ]
+)</code></pre></div>
+    <div class="stack">
+      <h3>Weekday="Mon" &rarr; [1,0,0,0,0,0,0]</h3>
+      <ul class="explain-list">
+        <li><strong>OneHotEncoder</strong> แปลงแต่ละหมวดหมู่เป็นเวกเตอร์ 0/1 แยกช่อง</li>
+        <li><strong>handle_unknown="ignore"</strong> คือประกันภัย &mdash; เจอค่าแปลกที่ไม่เคยเห็นตอนเทรน จะได้เวกเตอร์ 0 ล้วน แทนที่จะพัง</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 50-51</div>
+  <h2>Pipeline &mdash; ห่อ 2 ขั้นตอนเป็นวัตถุเดียว</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>clf = GradientBoostingClassifier(random_state=42)
+
+return Pipeline(steps=[
+    <span class="c-hl">("preprocess", preprocessor),</span>
+    <span class="c-hl">("model", clf),</span>
+])</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li>เรียก <code style="font-family:'JetBrains Mono',monospace">.fit()</code> ครั้งเดียว &mdash; รัน encoder ก่อน แล้วค่อยเทรนโมเดล</li>
+        <li>เรียก <code style="font-family:'JetBrains Mono',monospace">.predict()</code> ทีหลัง &mdash; แปลงข้อมูลใหม่แบบเดียวกับตอนเทรน<strong>โดยอัตโนมัติ</strong></li>
+        <li>ป้องกันบั๊กยอดฮิต: ลืมแปลงข้อมูล inference ให้เหมือนตอนเทรน</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 59-61</div>
+  <h2>แบ่งข้อมูล 80/20 แบบ Stratified</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>X_train, X_test, y_train, y_test = train_test_split(
+    X, y,
+    test_size=0.2,
+    random_state=42,
+    <span class="c-hl">stratify=y,</span>
+)</code></pre></div>
+    <div class="stack">
+      <div class="big-stat">
+        <div class="item"><span class="n">2,837</span><span class="l">แถว Train (80%)</span></div>
+        <div class="item"><span class="n">710</span><span class="l">แถว Test (20%)</span></div>
+      </div>
+      <ul class="explain-list">
+        <li><strong>stratify=y</strong> บังคับสัดส่วนเมนู (เช่น Espresso 3.6%) ให้เท่ากันทั้งสองชุด</li>
+        <li><strong>random_state=42</strong> ล็อกการสุ่ม ให้ได้ 710 แถวชุดเดิมทุกครั้งที่รัน</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 63-67</div>
+  <h2>fit() คือจุดที่โมเดล "เรียนรู้" จริง ๆ</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code><span class="c-hl">pipeline.fit(X_train, y_train)</span>
+
+y_pred  = pipeline.predict(X_test)
+y_proba = pipeline.predict_proba(X_test)</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li><strong>.fit()</strong> สร้างต้นไม้ 100 ต้นเรียงกัน แต่ละต้นแก้ error ของต้นก่อนหน้า</li>
+        <li><strong>.predict()</strong> คืนคำตอบเดียว/แถว เช่น "Latte"</li>
+        <li><strong>.predict_proba()</strong> คืนความน่าจะเป็นครบทั้ง 8 เมนู/แถว (รวมกัน = 1.0)</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 68-75</div>
+  <h2>วัดผล: เทียบกับ Baseline เสมอ</h2>
+  <div class="big-stat" style="margin-top:.2em;">
+    <div class="item"><span class="n">22.8%</span><span class="l">Baseline (เดาเมนูฮิตสุด)</span></div>
+    <div class="item"><span class="n" style="color:var(--accent-2)">28.6%</span><span class="l">Top-1 Accuracy</span></div>
+    <div class="item"><span class="n" style="color:var(--accent-2)">77.6%</span><span class="l">Top-4 Accuracy</span></div>
+  </div>
+  <div class="code-panel"><pre><code>acc          = accuracy_score(y_test, y_pred)
+baseline_acc = y.value_counts(normalize=True).max()
+top_k_acc    = top_k_accuracy_score(
+    y_test, y_proba, k=TOP_K,
+    labels=pipeline.named_steps["model"].classes_,
+)</code></pre></div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">train_model.py</span> บรรทัด 83-97</div>
+  <h2>joblib.dump() &mdash; "สัญญา" ระหว่าง 2 โปรแกรม</h2>
+  <div class="kv-grid">
+    <div class="kv-card"><span class="k">pipeline</span><span class="v">โมเดลทั้งก้อน (encoder + classifier) &mdash; app.py เรียก .predict_proba()</span></div>
+    <div class="kv-card"><span class="k">weekday_order / month_order / time_of_day_order</span><span class="v">ลำดับที่ถูกต้อง &rarr; สร้าง &lt;select&gt; บนหน้าเว็บ</span></div>
+    <div class="kv-card"><span class="k">test_accuracy / baseline_accuracy</span><span class="v">ตัวเลขโชว์ในกล่องข้อความบนหน้าเว็บ</span></div>
+    <div class="kv-card"><span class="k">top_k / top_k_accuracy</span><span class="v">ใช้ไฮไลต์เมนูแนะนำ 4 อันดับแรกด้วย &#9733;</span></div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="divider-slide">
+    <div class="num">ภาค 2 / 3</div>
+    <h1>เว็บเซิร์ฟเวอร์</h1>
+    <div class="file-tag">app.py</div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">app.py</span> บรรทัด 5-17</div>
+  <h2>โหลดโมเดล "ครั้งเดียว" ตอนเซิร์ฟเวอร์ตื่น</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>app = Flask(__name__)
+
+<span class="c-hl">bundle   = joblib.load("model/coffee_model.joblib")</span>
+pipeline = bundle["pipeline"]
+top_k    = bundle["top_k"]
+...</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li>โค้ดนี้อยู่<strong>นอกฟังก์ชัน</strong> &rarr; รันแค่ตอนสั่ง <code style="font-family:'JetBrains Mono',monospace">python app.py</code></li>
+        <li>ไม่ใช่ทุกครั้งที่มีคนกดทำนาย &mdash; นี่คือเหตุผลที่เว็บตอบเร็ว</li>
+        <li>ตัวแปรเหล่านี้กลายเป็นของกลางที่ทั้ง 2 route ด้านล่างเรียกใช้ร่วมกัน</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">app.py</span> บรรทัด 20-31 &middot; GET /</div>
+  <h2>หน้าแรก: เติมค่าลง HTML แล้วส่งกลับ</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code><span class="c-hl">@app.route("/")</span>
+def index():
+    return render_template(
+        "index.html",
+        weekdays=weekday_order,
+        top_k=top_k,
+        top_k_accuracy=round(top_k_accuracy * 100, 1),
+        ...
+    )</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li>คูณ 100 และปัดเศษ<strong>ตรงนี้</strong> ไม่ใช่ใน train_model.py &mdash; แยกหน้าที่ "คำนวณ" กับ "แสดงผล" ชัดเจน</li>
+        <li><code style="font-family:'JetBrains Mono',monospace">render_template</code> เอาไฟล์ index.html มาเติมตัวแปรก่อนส่งกลับ</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">app.py</span> บรรทัด 36-46 &middot; POST /api/predict (1/3)</div>
+  <h2>รับ JSON แล้วตรวจก่อนเชื่อ</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>data = request.get_json(force=True)
+weekday = data.get("weekday")
+...
+
+if weekday not in weekday_order:
+    <span class="c-hl">return jsonify({"error": f"invalid weekday: {weekday}"}), 400</span></code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li>รับ body จาก JavaScript เช่น <code style="font-family:'JetBrains Mono',monospace">{"weekday":"Sat",...}</code></li>
+        <li><strong>Validate ที่ boundary</strong> &mdash; กันกรณีมีคนยิง API ตรง ๆ ด้วยค่ามั่ว ๆ ที่ไม่มีใน dropdown</li>
+        <li>ผิดเงื่อนไข &rarr; ตอบ HTTP <strong>400</strong> พร้อมข้อความ error</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">app.py</span> บรรทัด 48-53 &middot; POST /api/predict (2/3)</div>
+  <h2>สร้าง 1 แถว &rarr; ทำนาย &rarr; เรียงอันดับ</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>row = pd.DataFrame([{
+    "Weekday": weekday, "Month_name": month, "Time_of_Day": time_of_day
+}])
+<span class="c-hl">proba = pipeline.predict_proba(row)[0]</span>
+
+model_classes = pipeline.named_steps["model"].classes_
+ranked = sorted(zip(model_classes, proba), key=lambda x: x[1], reverse=True)</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li>ชื่อคอลัมน์ต้องตรงกับตอนเทรน<strong>เป๊ะ</strong> (Weekday, Month_name, Time_of_Day)</li>
+        <li><strong>pipeline เดียวกับตอนเทรน</strong> แปลงแถวนี้เป็นเวกเตอร์แบบเดียวกันโดยอัตโนมัติ</li>
+        <li><code style="font-family:'JetBrains Mono',monospace">zip()</code> จับคู่ชื่อเมนูกับความน่าจะเป็น แล้วเรียงมาก&rarr;น้อย</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">app.py</span> บรรทัด 55-67 &middot; POST /api/predict (3/3)</div>
+  <h2>ส่งกลับเป็น JSON พร้อมป้าย "ติดท็อป 4 ไหม"</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>return jsonify({
+    "prediction": ranked[0][0],
+    "top_k": top_k,
+    "probabilities": [
+        {"coffee_name": name, "probability": round(float(p), 4),
+         <span class="c-hl">"in_top_k": rank &lt; top_k</span>}
+        for rank, (name, p) in enumerate(ranked)
+    ],
+})</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li><code style="font-family:'JetBrains Mono',monospace">rank &lt; top_k</code> &rarr; True/False บอกว่าอยู่ใน 4 อันดับแรกไหม</li>
+        <li>นี่คือข้อมูลที่ทำให้ฝั่ง JavaScript รู้ว่าจะติดดาว &#9733; ให้แถวไหน</li>
+        <li><code style="font-family:'JetBrains Mono',monospace">float(p)</code> แปลงจาก numpy type เป็น float ปกติ ไม่งั้น jsonify พังตอนแปลง JSON</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="divider-slide">
+    <div class="num">ภาค 3 / 3</div>
+    <h1>หน้าเว็บ</h1>
+    <div class="files">
+      <div class="file-tag">templates/index.html</div>
+      <div class="file-tag">static/app.js</div>
+      <div class="file-tag">static/style.css</div>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">templates/index.html</span></div>
+  <h2>Jinja2: เติมค่า Python ลง HTML</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code><span class="c-hl">{{ test_accuracy }}%</span>
+
+&lt;select id="weekday"&gt;
+  {% for w in weekdays %}
+  &lt;option value="{{ w }}"&gt;{{ w }}&lt;/option&gt;
+  {% endfor %}
+&lt;/select&gt;</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li><code style="font-family:'JetBrains Mono',monospace">{{ }}</code> ถูกแทนที่ด้วยค่าจริงจาก <code style="font-family:'JetBrains Mono',monospace">render_template()</code> ก่อนส่งถึง browser</li>
+        <li><code style="font-family:'JetBrains Mono',monospace">{% for %}</code> วนสร้าง &lt;option&gt; ตามลำดับที่ถูกต้อง (ไม่ใช่เรียง A-Z)</li>
+        <li>browser เห็นแค่ HTML ล้วน ๆ ไม่เห็นไวยากรณ์ Jinja2 เลย</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">static/app.js</span></div>
+  <h2>กดปุ่มแล้วไม่ reload หน้า</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>form.addEventListener("submit", async (e) =&gt; {
+  <span class="c-hl">e.preventDefault();</span>
+
+  const res = await fetch("/api/predict", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(payload),
+  });
+  const data = await res.json();</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li><strong>preventDefault()</strong> หยุดพฤติกรรมปกติของฟอร์ม (ที่ปกติจะโหลดหน้าใหม่ทั้งหน้า)</li>
+        <li><strong>fetch</strong> ยิง POST ไปหา endpoint ใน app.py แบบ async</li>
+        <li><strong>await</strong> รอผลตอบกลับ โดยไม่บล็อกหน้าเว็บทั้งหน้า</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow"><span class="file-tag">static/app.js</span> + <span class="file-tag">style.css</span></div>
+  <h2>สร้างแถบกราฟด้วยมือ + ติดดาวท็อป 4</h2>
+  <div class="two-col">
+    <div class="code-panel"><pre><code>data.probabilities.forEach(({coffee_name, probability, in_top_k}) =&gt; {
+  const pct = (probability * 100).toFixed(1);
+  row.className = "bar-row" + <span class="c-hl">(in_top_k ? " bar-row-top-k" : "")</span>;
+  row.innerHTML = `
+    &lt;span&gt;${in_top_k ? "⭐ " : ""}${coffee_name}&lt;/span&gt;
+    &lt;span class="bar-fill" style="width:${pct}%"&gt;&lt;/span&gt;`;
+});</code></pre></div>
+    <div class="stack">
+      <ul class="explain-list">
+        <li>วนลูป 8 เมนูที่เรียงมาแล้วจากฝั่ง server สร้าง &lt;div&gt; ใหม่ทีละอัน</li>
+        <li><strong>in_top_k</strong> เติม class <code style="font-family:'JetBrains Mono',monospace">bar-row-top-k</code> &rarr; CSS สั่งพื้นหลังเข้มขึ้น</li>
+        <li>เติมดาว &#9733; นำหน้าชื่อเมนูที่ติดท็อป 4</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow">ต่อทุกชิ้นเข้าด้วยกัน</div>
+  <h2>1 รอบการทำงาน ตั้งแต่เปิดเว็บถึงเห็นผล</h2>
+  <div class="flow">
+    <div class="flow-phase-label">ผู้ใช้เปิดเว็บ</div>
+    <div class="flow-step"><div class="dot">1</div><div class="body">
+      <div class="t">Browser &rarr; <code style="font-family:'JetBrains Mono',monospace">GET /</code></div>
+      <div class="d">app.py: index() &rarr; render_template() &rarr; ส่ง HTML ที่เติมค่าครบแล้วกลับไป</div>
+    </div></div>
+    <div class="flow-step"><div class="dot">2</div><div class="body">
+      <div class="t">Browser โหลด style.css + app.js</div>
+      <div class="d">ผูก event listener ไว้กับปุ่ม "ทำนายเมนู" รอผู้ใช้กด</div>
+    </div></div>
+    <div class="flow-phase-label">ผู้ใช้เลือก Sat / Nov / Night แล้วกดปุ่ม</div>
+    <div class="flow-step"><div class="dot">3</div><div class="body">
+      <div class="t">app.js &rarr; <code style="font-family:'JetBrains Mono',monospace">POST /api/predict</code></div>
+      <div class="d">ส่ง {"weekday":"Sat","month":"Nov","time_of_day":"Night"} เป็น JSON</div>
+    </div></div>
+    <div class="flow-step"><div class="dot">4</div><div class="body">
+      <div class="t">app.py: predict() &rarr; pipeline.predict_proba()</div>
+      <div class="d">validate &rarr; สร้าง DataFrame 1 แถว &rarr; ได้ความน่าจะเป็น 8 เมนู &rarr; เรียงอันดับ</div>
+    </div></div>
+    <div class="flow-step"><div class="dot">5</div><div class="body">
+      <div class="t">app.js รับ JSON กลับมา</div>
+      <div class="d">วาดแถบกราฟ 8 แถว ไฮไลต์ &#9733; ให้ 4 แถวแรก โดย<strong>ไม่ reload หน้า</strong></div>
+    </div></div>
+  </div>
+</div></section>
+
+
+<section><div class="slide-inner">
+  <div class="eyebrow">สรุป</div>
+  <h2>3 บทเรียนจากโค้ดชุดนี้</h2>
+  <ul class="explain-list" style="margin-top:.6em;">
+    <li><strong>Pipeline</strong> ผูก preprocessing กับโมเดลไว้ด้วยกัน &mdash; ป้องกันความต่างระหว่างตอนเทรนกับตอนใช้จริง</li>
+    <li><strong>ไฟล์ .joblib</strong> คือสัญญากลาง ที่ทำให้ train_model.py กับ app.py แยกกันรันได้อย่างอิสระ</li>
+    <li><strong>Validate เสมอที่ boundary</strong> (ทั้งใน app.py และตอนเทรน) ก่อนเชื่อข้อมูลที่มาจากภายนอก</li>
+  </ul>
+  <div class="chip-row">
+    <div class="chip">train_model.py</div>
+    <div class="chip">model/coffee_model.joblib</div>
+    <div class="chip">app.py</div>
+    <div class="chip">templates/index.html</div>
+    <div class="chip">static/app.js</div>
+    <div class="chip">static/style.css</div>
+  </div>
+</div></section>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0.06,
+    minScale: 0.2,
+    maxScale: 1.5,
+    controls: true,
+    progress: true,
+    slideNumber: 'c/t',
+    hash: false,
+    history: false,
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    keyboard: true,
+    touch: true,
+  });
+</script>

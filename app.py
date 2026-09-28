@@ -1,10 +1,13 @@
+import os
+
 from flask import Flask, jsonify, render_template, request
 import joblib
 import pandas as pd
 
 app = Flask(__name__)
 
-MODEL_PATH = "model/coffee_model.joblib"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model", "coffee_model.joblib")
 bundle = joblib.load(MODEL_PATH)
 pipeline = bundle["pipeline"]
 classes = bundle["classes"]
